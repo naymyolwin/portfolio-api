@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const dotent = require("dotenv").config();
+require("dotenv").config();
 const sendMail = require("./sendmail.js");
 const connectDB = require("./getdata.js");
 const Project = require("./projectschema.js");
@@ -14,6 +14,10 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+
+app.get("/", async (req, res) => {
+  res.status(200).json("DONE");
+});
 
 app.get("/get/personaldata", async (req, res) => {
   const myData = await PersonalData.find();
