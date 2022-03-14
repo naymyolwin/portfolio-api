@@ -6,7 +6,7 @@ const sendMail = require("./sendmail.js");
 const connectDB = require("./getdata.js");
 const Project = require("./projectschema.js");
 const Skill = require("./skillschema.js");
-const PersonalData = require("./personaldataschema.js");
+const Data = require("./personaldataschema.js");
 
 const port = process.env.PORT || 5000;
 
@@ -19,8 +19,8 @@ app.get("/", async (req, res) => {
   res.status(200).json("DONE");
 });
 
-app.get("/get/personaldata", async (req, res) => {
-  const myData = await PersonalData.find();
+app.get("/get/datas", async (req, res) => {
+  const myData = await Data.find();
   res.status(200).json(myData);
 });
 
