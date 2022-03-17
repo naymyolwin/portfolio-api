@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 require("dotenv").config();
 const sendMail = require("./sendmail.js");
@@ -14,9 +15,10 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname + "/public"));
 
-app.get("/", async (req, res) => {
-  res.status(200).json("DONE");
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.get("/get/datas", async (req, res) => {
