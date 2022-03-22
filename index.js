@@ -37,7 +37,7 @@ app.get("/get/skills", async (req, res) => {
 });
 
 app.post("/send/email", (req, res) => {
-  sendMail(req.body.params.name);
+  sendMail(req.body.params);
   res.send("Email Sent");
 });
 
